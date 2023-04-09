@@ -92,9 +92,10 @@ General clean ups, TODOs and things I wish to implement for this project:
 
 * [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
   my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
-  probably not as easy as just feeding it the text?
+  probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data. I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search but you don't need *generative* AI for the actual response
 * [ ] Consider using the OpenAI CLI (a Python package). Using the API directly from Insomnia is always a good start but
-  if I want to "if-this-then-that" then I need to reach for a program.
+  if I want to "if-this-then-that" then I need to reach for a program. UPDATE: LangChain is the way to go for if-this-then-that
+  and all sorts of well-thought out "chains" of AI-based automation.
 
 
 ## Reference
