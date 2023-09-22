@@ -88,7 +88,7 @@ The response was:
 
 ## Wish List
 
-General clean ups, TODOs and things I wish to implement for this project:
+General clean-ups, TODOs and things I wish to implement for this project:
 
 * [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
   my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
@@ -98,6 +98,15 @@ General clean ups, TODOs and things I wish to implement for this project:
 * [ ] Consider using the OpenAI CLI (a Python package). Using the API directly from Insomnia is always a good start but
   if I want to "if-this-then-that" then I need to reach for a program. UPDATE: LangChain is the way to go for if-this-then-that
   code beyond "hello world" examples, and LangChain has all sorts of well-thought out "chains" of AI-based automation.
+* [ ] SKIP (I'm using the CodeGPT plugin) Intellij plugin. While the ChatGPT UI is overall excellent and I get lots of usage out of it, really want a chat
+  experience lets me use much larger contexts than the ChatGPT UI. I've looked at open source options and some are quite
+  good, but those are also implemented in a thick stack including Next.js, TypeScript, TailwindCSS, etc. These technologies
+  are perfectly good, but I need something that I can hack on, and unfortunately I don't have enough time to maintain an
+  understanding of these technologies and the exact codebase of one of these open source projects (at least, I can't do
+  that without LLM superpowers). For me, I was thinking of doing htmx + Thymeleaf, but then I realized that I want an
+  enhanced LLM chat experience exclusively for doing development work. And I know how to do an Intellij plugin. And
+  Intellij has a file explorer which can act as "chat history" and Intellij is a code editor. And Intellij has syntax
+  highlighting. What other features would I even need? It's perfect.
 
 
 ## Reference
