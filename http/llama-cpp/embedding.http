@@ -1,0 +1,7 @@
+### The 'embedding' endpoint of a local llama.cpp HTTP server
+POST http://localhost:8080/embedding
+Content-Type: application/json
+
+{
+  "content": "Hello world"
+}

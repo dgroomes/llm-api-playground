@@ -1,3 +1,5 @@
 .idea/
 .gradle/
 build/
+http-client.private.env.json
+scratch.private.http

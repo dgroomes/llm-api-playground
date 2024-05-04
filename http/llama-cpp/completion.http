@@ -1,0 +1,8 @@
+### The 'completion' endpoint of a local llama.cpp HTTP server
+POST http://localhost:8080/completion
+Content-Type: application/json
+
+{
+  "prompt": "What is a CPU?",
+  "n_predict": 128
+}

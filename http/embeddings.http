@@ -1,0 +1,10 @@
+### Create an embedding
+POST {{origin}}/v1/embeddings
+Authorization: Bearer {{api_key}}
+Content-Type: application/json
+
+{
+  "input": "Hell world",
+  "model": "text-embedding-ada-002",
+  "encoding_format": "float"
+}

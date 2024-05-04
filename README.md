@@ -1,8 +1,6 @@
 # openai-playground
 
-NOT YET IMPLEMENTED
-
-📚 Learning and exploring OpenAI.
+📚 Learning and exploring OpenAI and LLM APIs in general.
 
 > OpenAI is an AI research and deployment company. Our mission is to ensure that artificial general intelligence
 > benefits all of humanity.
@@ -17,6 +15,8 @@ practical documentation and APIs for me to do this. This repository captures my 
 
 In the future, I'm excited to try open source models and other models from different vendors but right now, OpenAI is
 the way to go.
+
+So far in this project, I've added some basic exploratory HTTP requests to the OpenAI API in the `http/` directory. 
 
 
 ## Glossary
@@ -48,44 +48,6 @@ and Davinci.
 *temperature*: (Interesting, but I'll skip for now.)
 
 
-## Notes
-
-I've gotten started using the API from Insomnia. Here is an example request to the *completions* endpoint:
-
-```json
-{
-	"model": "text-davinci-003",
-	"prompt": "Please describe the essence of travel in five distinct descriptions. Each description should be increasingly abstract from the previous to the point that the final description is abstract nonsense.",
-	"temperature": 0,
-	"max_tokens": 500
-}
-```
-
-The response was:
-
-```json
-{
-	"id": "cmpl-abc123",
-	"object": "text_completion",
-	"created": 1674322445,
-	"model": "text-davinci-003",
-	"choices": [
-		{
-			"text": "\n\n1. Moving from one place to another.\n2. Exploring new cultures and environments.\n3. Experiencing the unknown.\n4. Gaining insight into the world and oneself.\n5. Uncovering the mysteries of the universe.",
-			"index": 0,
-			"logprobs": null,
-			"finish_reason": "stop"
-		}
-	],
-	"usage": {
-		"prompt_tokens": 31,
-		"completion_tokens": 54,
-		"total_tokens": 85
-	}
-}
-```
-
-
 ## Wish List
 
 General clean-ups, TODOs and things I wish to implement for this project:
@@ -93,11 +55,11 @@ General clean-ups, TODOs and things I wish to implement for this project:
 * [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
   my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
   probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data.
-  I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search but you
+  I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you
   don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
 * [ ] Consider using the OpenAI CLI (a Python package). Using the API directly from Insomnia is always a good start but
   if I want to "if-this-then-that" then I need to reach for a program. UPDATE: LangChain is the way to go for if-this-then-that
-  code beyond "hello world" examples, and LangChain has all sorts of well-thought out "chains" of AI-based automation.
+  code beyond "hello world" examples, and LangChain has all sorts of well-thought-out "chains" of AI-based automation.
 * [ ] SKIP (I'm using the CodeGPT plugin) Intellij plugin. While the ChatGPT UI is overall excellent and I get lots of usage out of it, really want a chat
   experience lets me use much larger contexts than the ChatGPT UI. I've looked at open source options and some are quite
   good, but those are also implemented in a thick stack including Next.js, TypeScript, TailwindCSS, etc. These technologies
