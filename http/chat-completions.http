@@ -3,7 +3,7 @@ Content-Type: application/json
 Authorization: Bearer {{api_key}}
 
 {
-  "model": "gpt-3.5-turbo-0125",
+  "model": "gpt-4o-mini",
   "messages": [
     {
       "role": "system",
@@ -18,3 +18,87 @@ Authorization: Bearer {{api_key}}
   "max_tokens": 500
 }
 
+
+### Chat Completions with tools
+#
+# Read about function calling in the OpenAI docs: https://platform.openai.com/docs/guides/function-calling
+POST {{origin}}/v1/chat/completions
+Content-Type: application/json
+
+{
+  "model": "llama3.1:8b-instruct-q8_0",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the weather in Toronto?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "temperature": 0.7,
+      "max_tokens": 500,
+      "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather for a city",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "The name of the city"
+            }
+          },
+          "required": ["city"]
+        }
+      }
+    }
+  ]
+}
+
+### Chat Completions with tools (tic-tac-toe)
+POST {{origin}}/v1/chat/completions
+Content-Type: application/json
+
+{
+  "model": "llama3.1:8b-instruct-q8_0",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are player 'O' in a game of tic-tac-toe. You're job is to play the game and also be a helper to player 'X' by actually placing the marks on the board. Player 'X' doesn't have access to the board state, so you will place 'X' marks on their behalf."
+    },
+    {
+      "role": "user",
+      "content": "The board state is ╭───┬───┬───┬───╮\n│ # │ a │ b │ c │\n├───┼───┼───┼───┤\n│ 0 │ - │ - │ - │\n│ 1 │ - │ - │ - │\n│ 2 │ - │ - │ - │\n╰───┴───┴───┴───╯  Please place an 'X' in the center of the board."
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "temperature": 0.7,
+      "max_tokens": 500,
+      "function": {
+        "name": "place_tic_tac_toe_mark",
+        "description": "Place a tic-tac-toe mark ('X' or 'O') on the board",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mark": {
+              "type": "string",
+              "description": "The mark to place ('X' or 'O')"
+            },
+            "row": {
+              "type": "number",
+              "description": "The row to place the mark in (0, 1, or 2)"
+            },
+            "column": {
+              "type": "string",
+              "description": "The column to place the mark in ('a', 'b', or 'c')"
+            }
+          },
+          "required": ["mark", "row", "column"]
+        }
+      }
+    }
+  ]
+}
