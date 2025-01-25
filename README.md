@@ -14,6 +14,24 @@ to keeping building my intuition about how best to use LLMs to enrich a software
 ability, cost, latency, context size, and more.
 
 
+## Instructions
+
+Follow these instructions to run the LLM-powered `tic-tac-toe` game.
+
+1. Pre-requisite: [Nushell](https://github.com/nushell/nushell)
+2. Make an OpenAI API key available via environment variable
+    * ```nushell
+      $env.TIC_TAC_TOE_API_KEY = (input -s)
+      ```
+3. Use the `play` command
+    * ```nushell
+      use tic-tac-toe/tic-tac-toe.nu play
+      ```
+4. Play the game!
+    * Use natural language to describe where to place your 'X'. Ask the LLM to take their turn, and rejoice in the LLM
+      either figuring things out OR in it making silly mistakes.
+
+
 ## Glossary
 
 This is a glossary of terms I'm learning about. When I'm in a new field and I can't keep up with the terms (they don't
@@ -48,9 +66,15 @@ and Davinci.
 General clean-ups, TODOs and things I wish to implement for this project:
 
 * [x] DONE Rename to `llm-playground`
-* [ ] Port over my LLM functional-calling powered `tic-tac-toe` game from <https://github.com/dgroomes/nushell-playground>
+* [x] DONE Transfer my LLM functional-calling powered `tic-tac-toe` game from <https://github.com/dgroomes/nushell-playground>
 * [ ] Anthropic example requests
+* [ ] Implement the game end function.
 * [ ] Prompt caching
+* [ ] More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
+  although even 4o is not great. I know that the table-styled Nushell output is probably confusing it, and I could
+  strip it out, but I like this as a reminder about how fragile real world an integration is. Good example to try more
+  examples (few shot). Let's see what happens. I want to explore some variations, but I'm really trying to make an
+  eval (though interesting, I would want more scaffolding and design around that, though maybe simple is better).
 * [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
   my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
   probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data.
