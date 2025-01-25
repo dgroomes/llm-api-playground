@@ -1,4 +1,4 @@
-const system_prompt = [(path self) "system_prompt.txt"] | path join | path expand
+const DIR = (path self | path dirname)
 
 # Let's write a tic-tac-toe game by using the 'tool/function calling' features of LLM APIs.
 #
@@ -18,7 +18,7 @@ const system_prompt = [(path self) "system_prompt.txt"] | path join | path expan
 #
 # This is the entry point of the game.
 export def --env play [message?: string] {
-    mut board = if 'TIC_TAC_TOE_BOARD' in $env { $env.TIC_TAC_TOE_BOARD } else { [[a b c]; [- - -] [- - -] [- - -]] }
+    mut board = if 'TIC_TAC_TOE_BOARD' in $env { $env.TIC_TAC_TOE_BOARD } else { [[left middle right]; [- - -] [- - -] [- - -]] }
 
     let response = if ($message == null) {
         ask-llm $board
@@ -38,7 +38,14 @@ export def --env play [message?: string] {
         }
         "place_mark" => {
            let args = $function.arguments | from json
-           let row_index = $args.row | into int
+           let row_index = match $args.row {
+               "top" => 0
+               "middle" => 1
+               "bottom" => 2
+               _ => {
+                 error make { msg: $"Unrecognized row argument: ($args.row)" }
+               }
+           }
            $board = ($board | update $row_index { |row| $row | update $args.column $args.mark })
            print $board
            $env.TIC_TAC_TOE_BOARD = $board
@@ -48,10 +55,13 @@ export def --env play [message?: string] {
            let args = $function.arguments | from json
            let winner = $args.winner
 
-           let message = if $winner == "draw" {
-               "It's a draw!"
-           } else {
-               $"($winner) wins! 🎉"
+           let message = match $winner {
+               "X" => "You win! 🎉"
+               "O" => "I win! 🎉"
+               "draw" => "It's a draw!"
+               _ => {
+                 error make { msg: $"Unrecognized winner argument: ($winner)" }
+               }
            }
 
            print $message
@@ -68,10 +78,13 @@ export def --env play [message?: string] {
 # a form of inversion of control of a traditional program structure.
 def ask-llm [board: table, message?: string]: nothing -> table {
    let user_content = if message == null {
-       $"The board state is:(char newline)($board | table)(char newline)What's the next operation?"
+       $"The board state is:(char newline)($board | to csv --separator (char space) --noheaders)(char newline)What's the next operation?"
    } else {
-       $"The board state is:(char newline)($board | table)(char newline)The user player said '($message)'. What's the next operation?"
+       $"The board state is:(char newline)($board | to csv --separator (char space) --noheaders)(char newline)The user player said '($message)'. What's the next operation?"
    }
+
+   let system_prompt = [$DIR "system_prompt.txt"] | path join | path expand
+   let tools = [$DIR "tools.yaml"] | path join | path expand | open
 
    let body = {
        model: "gpt-4o"
@@ -83,62 +96,7 @@ def ask-llm [board: table, message?: string]: nothing -> table {
            role: "user"
            content: $user_content
        }]
-       tools: [
-       {
-           type: "function"
-           temperature: 0.7
-           max_tokens: 500
-           function: {
-               name: "ask_user"
-               description: "Ask the user for the next instruction in the game. At this point, it's the user's turn in the game, and the officiator is waiting for them to pick a spot to mark the board or request to restart the game. 'X' (the user player) always goes first. The top row is row 0, the middle row is row 1, and the bottom row is row 2. The left column is column 'a', the middle column is column 'b', and the right column is column 'c'. It is NOT the user's turn if there are more 'X' than 'O'."
-           }
-       }
-       {
-           type: "function"
-           temperature: 0.7
-           max_tokens: 500
-           function: {
-               name: "place_mark"
-               description: "Place a tic-tac-toe mark ('X', 'O', or '-') on the board"
-               parameters: {
-                   type: "object"
-                   properties: {
-                       mark: {
-                           type: "string"
-                           description: "The mark to place ('X', 'O', or '-'). The mark will be '-' in the case of an undo operation or as part of a board reset. It is YOUR turn if there are more 'X' than 'O'. You are expected to place an 'O'."
-                       }
-                       row: {
-                           type: "number"
-                           description: "The row to place the mark in (0, 1, or 2)"
-                       }
-                       column: {
-                           type: "string"
-                           description: "The column to place the mark in ('a', 'b', or 'c')"
-                       }
-                   }
-                   required: ["mark" "row" "column"]
-               }
-           }
-       }
-       {
-           type: "function"
-           temperature: 0.7
-           max_tokens: 500
-           function: {
-               name: "game_end"
-               description: "Declare the winner of the game or a draw. This happens when X or O got three in a row, or the board is full."
-               parameters: {
-                   type: "object"
-                   properties: {
-                       winner: {
-                           type: "string"
-                           description: "'X', 'O' or 'draw'"
-                       }
-                   }
-                   required: ["winner"]
-               }
-           }
-       }]
+       tools: $tools
     }
 
     print $body.messages.1

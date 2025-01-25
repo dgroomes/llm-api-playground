@@ -1,0 +1,49 @@
+- type: function
+  temperature: 0.7
+  max_tokens: 500
+  function:
+    name: ask_user
+    description: |
+      Ask the user for the next instruction in the game. At this point, it's the user's turn in the game, and the
+      officiator is waiting for them to pick a spot to mark the board or request to restart the game. 'X' (the user
+      player) always goes first. It is NOT the user's turn if there are more 'X' marks than 'O' marks on the board.
+- type: function
+  temperature: 0.7
+  max_tokens: 500
+  function:
+    name: place_mark
+    description: Place a tic-tac-toe mark ('X', 'O', or '-') on the board
+    parameters:
+      type: object
+      properties:
+        mark:
+          type: string
+          description: |
+            The mark to place ('X', 'O', or '-'). The mark will be '-' in the case of an undo operation or as part of a
+            board reset. It is YOUR turn if there are more 'X' marks than 'O' marks on the board. You are expected to
+            place an 'O'.
+        row:
+          type: string
+          description: The row to place the mark in ('top', 'middle', or 'bottom')
+        column:
+          type: string
+          description: The column to place the mark in ('left', 'middle', or 'right')
+      required:
+      - mark
+      - row
+      - column
+- type: function
+  temperature: 0.7
+  max_tokens: 500
+  function:
+    name: game_end
+    description: Declare the winner of the game or a draw. This happens when X or O got three in a row, or the board is full.
+    parameters:
+      type: object
+      properties:
+        winner:
+          type: string
+          description: |
+            'X', 'O' or 'draw'
+      required:
+      - winner
