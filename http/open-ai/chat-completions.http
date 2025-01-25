@@ -1,3 +1,4 @@
+### Basic completion
 POST {{origin}}/v1/chat/completions
 Content-Type: application/json
 Authorization: Bearer {{api_key}}
@@ -24,9 +25,10 @@ Authorization: Bearer {{api_key}}
 # Read about function calling in the OpenAI docs: https://platform.openai.com/docs/guides/function-calling
 POST {{origin}}/v1/chat/completions
 Content-Type: application/json
+Authorization: Bearer {{api_key}}
 
 {
-  "model": "llama3.1:8b-instruct-q8_0",
+  "model": "gpt-4o-mini",
   "messages": [
     {
       "role": "user",
@@ -59,9 +61,10 @@ Content-Type: application/json
 ### Chat Completions with tools (tic-tac-toe)
 POST {{origin}}/v1/chat/completions
 Content-Type: application/json
+Authorization: Bearer {{api_key}}
 
 {
-  "model": "llama3.1:8b-instruct-q8_0",
+  "model": "gpt-4o-mini",
   "messages": [
     {
       "role": "system",

@@ -52,6 +52,10 @@ and Davinci.
 
 General clean-ups, TODOs and things I wish to implement for this project:
 
+* [ ] Rename to `llm-playground`
+* [ ] Port over my LLM functional-calling powered `tic-tac-toe` game from <https://github.com/dgroomes/nushell-playground>
+* [ ] Anthropic example requests
+* [ ] Prompt caching
 * [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
   my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
   probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data.
