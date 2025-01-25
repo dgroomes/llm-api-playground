@@ -1,22 +1,17 @@
-# openai-playground
+# llm-playground
 
-📚 Learning and exploring OpenAI and LLM APIs in general.
-
-> OpenAI is an AI research and deployment company. Our mission is to ensure that artificial general intelligence
-> benefits all of humanity.
->
-> -- <cite> https://openai.com/about/ </cite>
+📚 Learning and exploring LLM APIs like that of OpenAI and Anthropic.
 
 
 ## Overview
 
-I want (need) to learn about today's disruptive AI concepts like *large language models* (LLMs). OpenAI provides the
-practical documentation and APIs for me to do this. This repository captures my notes and runnable example code.
+I want (need) to learn about today's disruptive AI concepts like *large language models* (LLMs). Conveniently, these
+models are easily accessed via HTTP/JSON APIs. This repository captures my notes and runnable example code for
+interacting with LLM APIs.
 
-In the future, I'm excited to try open source models and other models from different vendors but right now, OpenAI is
-the way to go.
-
-So far in this project, I've added some basic exploratory HTTP requests to the OpenAI API in the `http/` directory. 
+I want some personal reference code, I want to learn the core trivia about these APIs, and even more importantly I want
+to keeping building my intuition about how best to use LLMs to enrich a software system. I want an intuition about
+ability, cost, latency, context size, and more.
 
 
 ## Glossary
@@ -52,7 +47,7 @@ and Davinci.
 
 General clean-ups, TODOs and things I wish to implement for this project:
 
-* [ ] Rename to `llm-playground`
+* [x] DONE Rename to `llm-playground`
 * [ ] Port over my LLM functional-calling powered `tic-tac-toe` game from <https://github.com/dgroomes/nushell-playground>
 * [ ] Anthropic example requests
 * [ ] Prompt caching
