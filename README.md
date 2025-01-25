@@ -68,7 +68,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
 * [x] DONE Rename to `llm-playground`
 * [x] DONE Transfer my LLM functional-calling powered `tic-tac-toe` game from <https://github.com/dgroomes/nushell-playground>
 * [ ] Anthropic example requests
-* [ ] Implement the game end function.
+* [x] DONE Implement the game end function.
 * [ ] Prompt caching
 * [ ] More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
   although even 4o is not great. I know that the table-styled Nushell output is probably confusing it, and I could

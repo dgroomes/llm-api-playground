@@ -44,6 +44,19 @@ export def --env play [message?: string] {
            $env.TIC_TAC_TOE_BOARD = $board
            return
         }
+        "game_end" => {
+           let args = $function.arguments | from json
+           let winner = $args.winner
+
+           let message = if $winner == "draw" {
+               "It's a draw!"
+           } else {
+               $"($winner) wins! 🎉"
+           }
+
+           print $message
+           return
+        }
         _ => {
            print $"Unrecognized function: ($function_name)"
            return
@@ -62,7 +75,6 @@ def ask-llm [board: table, message?: string]: nothing -> table {
 
    let body = {
        model: "gpt-4o"
-       # model: "llama3.1:8b-instruct-q8_0"
        messages: [{
            role: "system"
            content: $system_prompt
