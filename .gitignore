@@ -3,3 +3,5 @@
 build/
 http-client.private.env.json
 scratch.private.http
+.game-board.yml
+.request-response.jsonl

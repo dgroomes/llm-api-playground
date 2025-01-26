@@ -23,13 +23,28 @@ Follow these instructions to run the LLM-powered `tic-tac-toe` game.
     * ```nushell
       $env.TIC_TAC_TOE_API_KEY = (input -s)
       ```
-3. Use the `play` command
+3. Overlay the game commands
     * ```nushell
-      use tic-tac-toe/tic-tac-toe.nu play
+      overlay use --prefix tic-tac-toe/tic-tac-toe.nu as tic
       ```
 4. Play the game!
     * Use natural language to describe where to place your 'X'. Ask the LLM to take their turn, and rejoice in the LLM
-      either figuring things out OR in it making silly mistakes.
+      either figuring things out OR in it making silly mistakes. For example.
+    * ```nushell
+      tic play "go in the middle middle"
+      ```
+    * ```nushell
+      tic board
+      ```
+    * ```nushell
+      tic play "your turn"
+      ```
+    * ```nushell
+      tic play "remove X in top right"
+      ```
+    * ```nushell
+      tic new-game
+      ```
 
 
 ## Glossary
@@ -70,7 +85,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
 * [ ] Anthropic example requests
 * [x] DONE Implement the game end function.
 * [ ] Prompt caching
-* [ ] IN PROGRESS More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
+* [ ] HOLD (I need more debuggability/auditing) More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
   although even 4o is not great. I know that the table-styled Nushell output is probably confusing it, and I could
   strip it out, but I like this as a reminder about how fragile real world an integration is. Good example to try more
   examples (few shot). Let's see what happens. I want to explore some variations, but I'm really trying to make an
@@ -81,6 +96,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
   going to just drop the Nushell table-style and do raw characters (`X`, `O` and `-`). UPDATE 2: Wow, this isn't any better.
   gpt4o botched the game pretty badly. I think I need the many examples. Also I'm tempted to log the full history for
   debugging.
+* [x] DONE File-based. Represent the game board in a file. Save the request/response history to files.
 * [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
   my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
   probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data.
