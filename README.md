@@ -102,7 +102,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
   probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data.
   I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you
   don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
-* [ ] Consider using the OpenAI CLI (a Python package). Using the API directly from Insomnia is always a good start but
+* [ ] SKIP (I'll stick with HTTP requests) Consider using the OpenAI CLI (a Python package). Using the API directly from Insomnia is always a good start but
   if I want to "if-this-then-that" then I need to reach for a program. UPDATE: LangChain is the way to go for if-this-then-that
   code beyond "hello world" examples, and LangChain has all sorts of well-thought-out "chains" of AI-based automation.
 * [ ] SKIP (I'm using the CodeGPT plugin) Intellij plugin. While the ChatGPT UI is overall excellent and I get lots of usage out of it, really want a chat

@@ -1,0 +1,15 @@
+### Generate Content
+POST {{origin}}/v1beta/models/gemini-2.0-flash:generateContent?key={{api_key}}
+Content-Type: application/json
+
+{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Explain how AI works"
+        }
+      ]
+    }
+  ]
+}
