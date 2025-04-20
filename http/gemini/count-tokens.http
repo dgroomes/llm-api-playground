@@ -1,5 +1,5 @@
-### Generate Content
-POST {{origin}}/v1beta/models/gemini-2.0-flash:generateContent?key={{api_key}}
+### Count Tokens
+POST {{origin}}/v1beta/models/gemini-2.0-flash:countTokens?key={{api_key}}
 Content-Type: application/json
 
 {

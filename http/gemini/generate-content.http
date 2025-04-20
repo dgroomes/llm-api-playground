@@ -1,0 +1,47 @@
+### Generate Content: Flash 2.0
+POST {{origin}}/v1beta/models/gemini-2.0-flash:generateContent?key={{api_key}}
+Content-Type: application/json
+
+{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Explain how AI works"
+        }
+      ]
+    }
+  ]
+}
+
+### Generate Content: Flash 2.0 Thinking
+POST {{origin}}/v1alpha/models/gemini-2.0-flash-thinking-exp:generateContent?key={{api_key}}
+Content-Type: application/json
+
+{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Explain how AI works"
+        }
+      ]
+    }
+  ]
+}
+
+### Generate Content: Flash 2.0 Pro
+POST {{origin}}/v1alpha/models/gemini-2.0-pro-exp-02-05:generateContent?key={{api_key}}
+Content-Type: application/json
+
+{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Explain how AI works"
+        }
+      ]
+    }
+  ]
+}
