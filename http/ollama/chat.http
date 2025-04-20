@@ -1,0 +1,17 @@
+### Generate a chat completion
+#
+# https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion
+#
+POST {{origin}}/api/chat
+Content-Type: application/json
+
+{
+  "model": "gemma3:27b-it-qat",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is a CPU? Use ONLY up to 20 words."
+    }
+  ],
+  "stream": false
+}
