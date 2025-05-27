@@ -1,12 +1,9 @@
 ### Generate a chat completion
-#
-# https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion
-#
-POST {{origin}}/api/chat
+POST {{origin}}/v1/chat/completions
 Content-Type: application/json
 
 {
-  "model": "qwen3:30b-a3b",
+  "model": "qwen/qwen3-30b-a3b",
   "messages": [
     {
       "role": "user",
@@ -18,13 +15,11 @@ Content-Type: application/json
 
 
 ### Chat Completions with tools
-#
-# Read about function calling in the OpenAI docs: https://platform.openai.com/docs/guides/function-calling?api-mode=chat&lang=curl
-POST {{origin}}/api/chat
+POST {{origin}}/v1/chat/completions
 Content-Type: application/json
 
 {
-  "model": "qwen3:30b-a3b",
+  "model": "qwen/qwen3-30b-a3b",
   "messages": [
     {
       "role": "user",
