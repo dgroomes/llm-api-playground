@@ -1,50 +1,30 @@
-# llm-playground
+# llm-api-playground
 
 📚 Learning and exploring LLM APIs like that of OpenAI and Anthropic.
 
 
 ## Overview
 
-I want (need) to learn about today's disruptive AI concepts like *large language models* (LLMs). Conveniently, these
-models are easily accessed via HTTP/JSON APIs. This repository captures my notes and runnable example code for
-interacting with LLM APIs.
+I need to continually learn how to leverage large language models (LLMs) for my applications, and the main interface to these models are via HTTP/JSON APIs.
 
-I want some personal reference code, I want to learn the core trivia about these APIs, and even more importantly I want
-to keeping building my intuition about how best to use LLMs to enrich a software system. I want an intuition about
-ability, cost, latency, context size, and more.
+This repository captures my notes and runnable example code for interacting with LLM APIs.
 
 
-## Instructions
+## Standalone subprojects
 
-Follow these instructions to run the LLM-powered `tic-tac-toe` game.
+This repository illustrates different concepts, patterns and examples via standalone subprojects. Each subproject is
+completely independent of the others and do not depend on the root project. This _standalone subproject constraint_
+forces the subprojects to be complete and maximizes the reader's chances of successfully running, understanding, and
+re-using the code.
 
-1. Pre-requisite: [Nushell](https://github.com/nushell/nushell)
-2. Make an OpenAI API key available via environment variable
-    * ```nushell
-      $env.TIC_TAC_TOE_API_KEY = (input -s)
-      ```
-3. Overlay the game commands
-    * ```nushell
-      overlay use --prefix tic-tac-toe/tic-tac-toe.nu as tic
-      ```
-4. Play the game!
-    * Use natural language to describe where to place your 'X'. Ask the LLM to take their turn, and rejoice in the LLM
-      either figuring things out OR in it making silly mistakes. For example.
-    * ```nushell
-      tic play "go in the middle middle"
-      ```
-    * ```nushell
-      tic board
-      ```
-    * ```nushell
-      tic play "your turn"
-      ```
-    * ```nushell
-      tic play "remove X in top right"
-      ```
-    * ```nushell
-      tic new-game
-      ```
+The subprojects include:
+
+
+### `tool-calling/`
+
+Showcasing OpenAI's tool-calling using a tic-tac-toe game powered by an LLM.
+
+See the README in [tool-calling/](tool-calling/).
 
 
 ## Glossary
@@ -80,6 +60,7 @@ and Davinci.
 
 General clean-ups, TODOs and things I wish to implement for this project:
 
+* [x] DONE Rename to `llm-api-playground` or similar. I want to narrow this project to that. LLMs/AI in general is too broad for one sub-project.
 * [ ] Anthropic example requests
 * [ ] Prompt caching
 * [ ] HOLD (I need more debuggability/auditing) More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
@@ -93,9 +74,9 @@ General clean-ups, TODOs and things I wish to implement for this project:
   going to just drop the Nushell table-style and do raw characters (`X`, `O` and `-`). UPDATE 2: Wow, this isn't any better.
   gpt4o botched the game pretty badly. I think I need the many examples. Also I'm tempted to log the full history for
   debugging.
-* [ ] Fine-tune a small model over my own content. I'd like to at least do fine-turning once, for the sake of it. This has to happen in the cloud probably, but if I fine-tune a small model I can run inference locally. I want to fine-tune the model with my own README content across all my repositories. Now that I think about it, fine-tuning for small models is probably a good idea because the capability of local models is relatively low, so we want to juice them for a specific task. 
-* [ ] "semantic search" product over my own data. I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
-* [ ] Split into sub-projects
+* [ ] (TODO move this out of this sub-project because it isn't an llm-api focus) Fine-tune a small model over my own content. I'd like to at least do fine-turning once, for the sake of it. This has to happen in the cloud probably, but if I fine-tune a small model I can run inference locally. I want to fine-tune the model with my own README content across all my repositories. Now that I think about it, fine-tuning for small models is probably a good idea because the capability of local models is relatively low, so we want to juice them for a specific task. 
+* [ ] (TODO move this out of this sub-project because it isn't an llm-api focus) "semantic search" product over my own data. I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
+* [x] DONE Split into sub-projects
 * [ ] "programmatic" example. I'm particularly interested in the UX of streaming the tokens back as they are generated. I need a programmatic example for this.
 
 
