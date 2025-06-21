@@ -80,10 +80,7 @@ and Davinci.
 
 General clean-ups, TODOs and things I wish to implement for this project:
 
-* [x] DONE Rename to `llm-playground`
-* [x] DONE Transfer my LLM functional-calling powered `tic-tac-toe` game from <https://github.com/dgroomes/nushell-playground>
 * [ ] Anthropic example requests
-* [x] DONE Implement the game end function.
 * [ ] Prompt caching
 * [ ] HOLD (I need more debuggability/auditing) More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
   although even 4o is not great. I know that the table-styled Nushell output is probably confusing it, and I could
@@ -96,24 +93,10 @@ General clean-ups, TODOs and things I wish to implement for this project:
   going to just drop the Nushell table-style and do raw characters (`X`, `O` and `-`). UPDATE 2: Wow, this isn't any better.
   gpt4o botched the game pretty badly. I think I need the many examples. Also I'm tempted to log the full history for
   debugging.
-* [x] DONE File-based. Represent the game board in a file. Save the request/response history to files.
-* [ ] Can I fine-tune a model with my own content? I want to fine-tune the model with my own README content across all
-  my repositories. Not really sure if that will be effective or if it takes a lot more metadata to make it work. It's
-  probably not as easy as just feeding it the text? UPDATE: what I want is a "semantic search" product over my own data.
-  I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you
-  don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
-* [ ] SKIP (I'll stick with HTTP requests) Consider using the OpenAI CLI (a Python package). Using the API directly from Insomnia is always a good start but
-  if I want to "if-this-then-that" then I need to reach for a program. UPDATE: LangChain is the way to go for if-this-then-that
-  code beyond "hello world" examples, and LangChain has all sorts of well-thought-out "chains" of AI-based automation.
-* [ ] SKIP (I'm using the CodeGPT plugin) Intellij plugin. While the ChatGPT UI is overall excellent and I get lots of usage out of it, really want a chat
-  experience lets me use much larger contexts than the ChatGPT UI. I've looked at open source options and some are quite
-  good, but those are also implemented in a thick stack including Next.js, TypeScript, TailwindCSS, etc. These technologies
-  are perfectly good, but I need something that I can hack on, and unfortunately I don't have enough time to maintain an
-  understanding of these technologies and the exact codebase of one of these open source projects (at least, I can't do
-  that without LLM superpowers). For me, I was thinking of doing htmx + Thymeleaf, but then I realized that I want an
-  enhanced LLM chat experience exclusively for doing development work. And I know how to do an Intellij plugin. And
-  Intellij has a file explorer which can act as "chat history" and Intellij is a code editor. And Intellij has syntax
-  highlighting. What other features would I even need? It's perfect.
+* [ ] Fine-tune a small model over my own content. I'd like to at least do fine-turning once, for the sake of it. This has to happen in the cloud probably, but if I fine-tune a small model I can run inference locally. I want to fine-tune the model with my own README content across all my repositories. Now that I think about it, fine-tuning for small models is probably a good idea because the capability of local models is relatively low, so we want to juice them for a specific task. 
+* [ ] "semantic search" product over my own data. I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
+* [ ] Split into sub-projects
+* [ ] "programmatic" example. I'm particularly interested in the UX of streaming the tokens back as they are generated. I need a programmatic example for this.
 
 
 ## Reference
