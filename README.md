@@ -60,23 +60,10 @@ and Davinci.
 
 General clean-ups, TODOs and things I wish to implement for this project:
 
-* [x] DONE Rename to `llm-api-playground` or similar. I want to narrow this project to that. LLMs/AI in general is too broad for one sub-project.
 * [ ] Anthropic example requests
 * [ ] Prompt caching
-* [ ] HOLD (I need more debuggability/auditing) More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
-  although even 4o is not great. I know that the table-styled Nushell output is probably confusing it, and I could
-  strip it out, but I like this as a reminder about how fragile real world an integration is. Good example to try more
-  examples (few shot). Let's see what happens. I want to explore some variations, but I'm really trying to make an
-  eval (though interesting, I would want more scaffolding and design around that, though maybe simple is better). Update:
-  wow, o1 is failing at this much more than I anticipated. I asked it to create some examples and in the second example
-  it described "X wins in a quick diagonal" but then proceeded to place Xs in the left column and Os extending in a dowright
-  diagonal and even asserting "X completes diagonal from (0, a) to (2, c)" but that path is literally X, O and O. I'm
-  going to just drop the Nushell table-style and do raw characters (`X`, `O` and `-`). UPDATE 2: Wow, this isn't any better.
-  gpt4o botched the game pretty badly. I think I need the many examples. Also I'm tempted to log the full history for
-  debugging.
 * [ ] (TODO move this out of this sub-project because it isn't an llm-api focus) Fine-tune a small model over my own content. I'd like to at least do fine-turning once, for the sake of it. This has to happen in the cloud probably, but if I fine-tune a small model I can run inference locally. I want to fine-tune the model with my own README content across all my repositories. Now that I think about it, fine-tuning for small models is probably a good idea because the capability of local models is relatively low, so we want to juice them for a specific task. 
 * [ ] (TODO move this out of this sub-project because it isn't an llm-api focus) "semantic search" product over my own data. I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
-* [x] DONE Split into sub-projects
 * [ ] "programmatic" example. I'm particularly interested in the UX of streaming the tokens back as they are generated. I need a programmatic example for this.
 
 

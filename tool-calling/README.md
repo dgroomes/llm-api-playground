@@ -41,3 +41,14 @@ Follow these instructions to run the LLM-powered `tic-tac-toe` game.
 General clean-ups, TODOs and things I wish to implement for this project:
 
 * [ ] Consider using a local LLM but using OpenAI-compatible APIs, like Ollama or LM Studio. I don't want to deal with an API key for this simple example.
+* [ ] HOLD (I need more debuggability/auditing) More examples in the tic-tac-toe prompt. It's surprising how bad the LLM is at tic-tac-toe, mostly o4-mini,
+  although even 4o is not great. I know that the table-styled Nushell output is probably confusing it, and I could
+  strip it out, but I like this as a reminder about how fragile real world an integration is. Good example to try more
+  examples (few shot). Let's see what happens. I want to explore some variations, but I'm really trying to make an
+  eval (though interesting, I would want more scaffolding and design around that, though maybe simple is better). Update:
+  wow, o1 is failing at this much more than I anticipated. I asked it to create some examples and in the second example
+  it described "X wins in a quick diagonal" but then proceeded to place Xs in the left column and Os extending in a dowright
+  diagonal and even asserting "X completes diagonal from (0, a) to (2, c)" but that path is literally X, O and O. I'm
+  going to just drop the Nushell table-style and do raw characters (`X`, `O` and `-`). UPDATE 2: Wow, this isn't any better.
+  gpt4o botched the game pretty badly. I think I need the many examples. Also I'm tempted to log the full history for
+  debugging.
