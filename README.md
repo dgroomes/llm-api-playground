@@ -27,6 +27,13 @@ Showcasing OpenAI's tool-calling using a tic-tac-toe game powered by an LLM.
 See the README in [tool-calling/](tool-calling/).
 
 
+### `openai-ts-sdk/`
+
+OpenAI TypeScript SDK example: response streaming and proxy config.
+
+See the README in [openai-ts-sdk/](openai-ts-sdk/).
+
+
 ## Glossary
 
 This is a glossary of terms I'm learning about. When I'm in a new field and I can't keep up with the terms (they don't
@@ -64,7 +71,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
 * [ ] Prompt caching
 * [ ] (TODO move this out of this sub-project because it isn't an llm-api focus) Fine-tune a small model over my own content. I'd like to at least do fine-turning once, for the sake of it. This has to happen in the cloud probably, but if I fine-tune a small model I can run inference locally. I want to fine-tune the model with my own README content across all my repositories. Now that I think about it, fine-tuning for small models is probably a good idea because the capability of local models is relatively low, so we want to juice them for a specific task. 
 * [ ] (TODO move this out of this sub-project because it isn't an llm-api focus) "semantic search" product over my own data. I should be able to make that with embeddings? Also take care to note that you can use AI for semantic search, but you don't need *generative* AI for the actual response (I think? We want to "classify" the query as one of a few Q&As...)
-* [ ] "programmatic" example. I'm particularly interested in the UX of streaming the tokens back as they are generated. I need a programmatic example for this.
+* [x] DONE openai sdk example. I'm particularly interested in the UX of streaming the tokens back as they are generated. I need a programmatic example for this.
 
 
 ## Reference
