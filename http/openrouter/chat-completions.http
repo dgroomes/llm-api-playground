@@ -1,0 +1,23 @@
+### Basic completion
+POST {{origin}}/api/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{api_key}}
+
+{
+  "model": "openai/gpt-oss-120b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "What is a CPU? 100 words or less."
+    }
+  ],
+  "provider": {
+    "only": [
+      "Cerebras"
+    ]
+  }
+}
