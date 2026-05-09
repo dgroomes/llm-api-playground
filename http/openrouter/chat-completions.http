@@ -14,6 +14,26 @@ Authorization: Bearer {{api_key}}
       "role": "user",
       "content": "What is a CPU? 100 words or less."
     }
+  ]
+}
+
+
+### Specific provider
+POST {{origin}}/api/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{api_key}}
+
+{
+  "model": "openai/gpt-oss-120b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "What is a CPU? 100 words or less."
+    }
   ],
   "provider": {
     "only": [
@@ -21,3 +41,13 @@ Authorization: Bearer {{api_key}}
     ]
   }
 }
+
+
+### Get account credits
+GET {{origin}}/api/v1/credits
+Authorization: Bearer {{api_key}}
+
+
+### API key info
+GET {{origin}}/api/v1/key
+Authorization: Bearer {{api_key}}
